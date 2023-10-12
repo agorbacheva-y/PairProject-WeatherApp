@@ -55,6 +55,11 @@ img {
     color: #2A5510;
 }
 
+.container-snowy{
+    background-color: #F4F7F8;
+    color: #37d4e9;
+}
+
 @media (min-width: 667px) {
     .container{
         font-size: 24px;

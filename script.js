@@ -1,4 +1,4 @@
-const container = document.getElementById("container");
+let container = document.getElementById("container");
 const header = document.getElementById("header");
 const typeTemp = document.getElementById("typeTemp");
 const sunrise = document.getElementById("sunrise");
@@ -58,54 +58,37 @@ const fetchStockholmWeather = async () => {
           weatherImg.innerHTML = `
                   <img src="./design/design2/icons/sunnies.svg" />`;
           weatherDescription.innerHTML += `
-                  <h2>The sky is 50 shades of grey in ${json.name}. </h2>`;
+                  <h2>Light a fire and get cosy. ${city} is looking grey today</h2>`;
+                  container.classList.toggle("container-clear");
           break;
         case "Clouds":
           weatherImg.innerHTML = `
                   <img src="./design/design2/icons/cloud.svg" />`;
           weatherDescription.innerHTML += `
-                  <h2>The sky is 50 shades of grey in ${json.name}. </h2>`;
+                  <h2>The sky is 50 shades of grey in ${city}. </h2>`;
+                  container.classList.toggle("container-cloudy");
           break;
         case "Rain":
           weatherImg.innerHTML = `
                   <img src="./design/design2/icons/umbrella.svg" />`;
           weatherDescription.innerHTML += `
-                  <h2>The sky is 50 shades of grey in ${json.name}. </h2>`;
+                  <h2>Don't forget your umbrella. It's wet in ${city} today. </h2>`;
+                  container.classList.toggle("container-rainy");
           break;
         case "Snow":
           weatherImg.innerHTML = `
                   <img src="./design/design2/icons/snowflake.svg" />`;
           weatherDescription.innerHTML += `
-                  <h2>The sky is 50 shades of grey in ${json.name}. </h2>`;
+                  <h2>Don't forget your winter coat. It's snowy in ${city} today.</h2>`;
+                  container.classList.toggle("container-snowy");
           break;
         default:
           weatherImg.innerHTML = `
                   <img src="./design/design2/icons/sunnies.svg" />`;
           weatherDescription.innerHTML += `
-                  <h2>The sky is 50 shades of grey in ${json.name}. </h2>`;
+                  <h2>Get your sunnies on. ${city} is looking rather great today. </h2>`;
           break;
       }
-
-      // Display image depending on weather type
-      //const weatherId = json.weather[0].id;
-      //console.log(weatherId);
-      //if (weatherId > 800) {
-      //  weatherImg.innerHTML = `
-      //    <img src="./design/design2/icons/cloud.svg" />
-      //  `
-      //} else if (weatherId = 800) {
-      //  weatherImg.innerHTML = `
-      //    <img src="./design/design2/icons/sunnies.svg" />
-      //  `
-      //} else if (weatherId > 700) {
-      //  weatherImg.innerHTML = `
-      //    <img src="./design/design2/icons/cloud.svg" />
-      //  `
-      //} else {
-      //  weatherImg.innerHTML = `
-      //    <img src="./design/design2/icons/umbrella.svg" />
-      //  `
-      //}
 
       // Display values in DOM
       typeTemp.innerHTML = `
@@ -181,7 +164,6 @@ const fetchForecast = async () => {
 
                 </div>
                 `;
-
       }
     })
     .catch((err) => console.log(err));
