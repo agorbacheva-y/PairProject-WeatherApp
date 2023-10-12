@@ -21,8 +21,8 @@ const fetchStockholmWeather = async () => {
     })
     .then(json => {
       console.log(json)
-      const city = json.name;
-      console.log("city:", city);
+      const cityName = json.name;
+      console.log("city:", cityName);
       const temp = json.main.temp;
       const tempRounded = Math.round(temp * 10) / 10;
       console.log("temp:", tempRounded);
@@ -46,33 +46,50 @@ const fetchStockholmWeather = async () => {
 
 
       // Display image and text depending on weather type
-      let weatherId = json.weather[0].id;
-      console.log(weatherId);
-      if (weatherId === 800) {
-        weatherImg.innerHTML = `
-          <img src="./design/design2/icons/sunnies.svg" />
-        `;
-        weatherText.innerHTML = `
-          <h1>Get your sunnies on. ${city} is looking rather great today.</h1>
-        `;
-        container.classList.add("clear");
-      } else if (weatherId > 700) {
-        weatherImg.innerHTML = `
-          <img src="./design/design2/icons/cloud.svg" />
-        `;
-        weatherText.innerHTML = `
-          <h1>Light a fire and get cosy. ${city} is looking grey today.</h1>
-        `;
-        container.classList.add("cloudy");
-      } else {
-        weatherImg.innerHTML = `
-          <img src="./design/design2/icons/umbrella.svg" />
-        `;
-        weatherText.innerHTML = `
-          <h1>Don't forget your umbrella. It's wet in ${city} today.</h1>
-        `;
-        container.classList.add("rainy");
-      }
+      let weatherMain = json.weather[0].main;
+      console.log(weatherMain);
+
+      switch (weatherMain) {
+        case "Clear":
+          weatherImg.innerHTML = `
+            <img src="./design/design2/icons/sunnies.svg" />`;
+          weatherText.innerHTML += `
+            <h2>Get your sunnies on. ${cityName} is looking rather great today.</h2>`;
+            container.classList.toggle("container-clear");
+          break;
+
+        case "Clouds":
+          weatherImg.innerHTML = `
+            <img src="./design/design2/icons/cloud.svg" />`;
+          weatherText.innerHTML += `
+            <h2>Light a fire and get cosy. ${cityName} is looking grey today.</h2>`;
+            container.classList.toggle("container-cloudy");
+          break;
+
+        case "Rain":
+          weatherImg.innerHTML = `
+            <img src="./design/design2/icons/umbrella.svg" />`;
+          weatherText.innerHTML += `
+            <h2>Don't forget your umbrella. It's wet in ${cityName} today.</h2>`;
+            container.classList.toggle("container-rainy");
+          break;
+
+        case "Snow":
+          weatherImg.innerHTML = `
+            <img src="./design/design2/icons/snowflake.svg" />`;
+          weatherText.innerHTML += `
+            <h2>Don't forget your winter coat. It's snowy in ${cityName} today.</h2>`;
+            container.classList.toggle("container-snowy");
+          break;
+          
+        default:
+          weatherImg.innerHTML = `
+            <img src="./design/design2/icons/sunnies.svg" />`;
+          weatherText.innerHTML += `
+            <h2>Get your sunnies on. ${cityName} is looking rather great today. </h2>`;
+          break;
+      } 
+      
 
       // Display values in DOM
       typeTemp.innerHTML = `
