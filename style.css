@@ -36,8 +36,6 @@ img {
     display: flex;
     justify-content: space-between;
     border-bottom: 2px dotted;
-    display: flex;
-    justify-content: space-between;
 }
 
 .container-cloudy{
