@@ -171,7 +171,7 @@ const fetchForecast = async () => {
 };
 
 //fetchForecast();
-
+// below codes are working uncorrectly, click method is not working properly you need to reload the page to see the result and search the city
 // Function to fetch data
 const performWeatherSearch = () => {
   const city = myInput.value;
