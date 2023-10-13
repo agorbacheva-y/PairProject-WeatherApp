@@ -33,6 +33,24 @@ h3 {
     padding: 10%;
 }
 
+#myLocation {
+    margin: 0.5em;
+    border-radius: 18px;
+    border: none;
+    height: 40px;
+    width: 70px;
+    outline: none;
+    background: #F47775;
+    opacity: 40%;
+    color: #fff4ec;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+  }
+  
+  #myLocation:hover {
+    opacity: 70%;
+  }
+
   .search-box {
     display: flex;
     align-items: center;
