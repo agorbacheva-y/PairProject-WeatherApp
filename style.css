@@ -55,7 +55,7 @@ h3 {
     font-size: 60%;
   }
 
-  button {
+  #myBtn {
     margin: 0.5em;
     border-radius: 50%;
     border: none;
@@ -69,7 +69,7 @@ h3 {
     transition: 0.2s ease-in-out;
   }
   
-  button:hover {
+  #myBtn:hover {
     background: #612f2f;
     opacity: 70%;
   }
