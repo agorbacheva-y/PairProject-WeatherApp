@@ -104,8 +104,9 @@ const fetchStockholmWeather = async () => {
     })
     .catch((err) => console.log(err));
 };
-
 //fetchStockholmWeather();
+
+
 
 // Function to fetch data in Stockholm
 const fetchForecast = async () => {
@@ -169,8 +170,9 @@ const fetchForecast = async () => {
     })
     .catch((err) => console.log(err));
 };
-
 //fetchForecast();
+
+
 // below codes are working uncorrectly, click method is not working properly you need to reload the page to see the result and search the city
 // Function to fetch data
 const performWeatherSearch = () => {
@@ -323,7 +325,6 @@ const performWeatherSearch = () => {
                     <div id="temperature" class="temperature">
                     <h3>Min: ${minTemp}&deg | Max ${maxTemp}&deg</h3>
                     </div>
-
                 </div>
                 `;
       }
