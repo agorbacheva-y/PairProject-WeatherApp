@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
   <script src="./script.js" defer></script>
+  <script src="https://kit.fontawesome.com/8e045d922d.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="./style.css" defer />
 </head>
 <body>
@@ -16,8 +17,17 @@
     </div>
     
     <div id="weatherDescription" class="weather-description">
+      <div class="grid-container">
         <div id="weatherImg" class="weather-img"></div>
-        <div id="weatherText" class="weather-text"></div>
+
+        <div class="search-box">
+          <input type="text" id="myInput" class="search-box" placeholder="Search your location" />
+          <button id="myBtn">
+            <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
+          </button>
+        </div>
+      </div>   
+      <div id="weatherText" class="weather-text"></div>    
     </div>
 
   <div id="fiveDaysForecast" class="five-days-forecast"></div>
