@@ -163,11 +163,11 @@ const fetchForecast = async () => {
                 <div id="forecastSection" class="forecast-section">
                 
                     <div id="weekdaysection" class="weekday-section">
-                         <h3> ${weekday} </h3>
+                      <h3> ${weekday} </h3>
                     </div>
                     
                     <div id="temperature" class="temperature">
-                    <h3>Min: ${minTemp}&deg | Max ${maxTemp}&deg</h3>
+                      <h3>Min: ${minTemp}&deg | Max ${maxTemp}&deg</h3>
                     </div>
 
                 </div>
