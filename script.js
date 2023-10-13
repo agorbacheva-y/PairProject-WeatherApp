@@ -1,12 +1,12 @@
-const container = document.getElementById("container");
+let container = document.getElementById("container");
 const header = document.getElementById("header");
 const typeTemp = document.getElementById("typeTemp");
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
-const weatherDescription = document.getElementById("weatherDescription");
+const weather = document.getElementById("weatherDescription");
 const weatherImg = document.getElementById("weatherImg");
-const fiveDaysForecast = document.getElementById("fiveDaysForecast");
-const weatherText = document.getElementById("weatherText");
+const fiveDaysForecastElement = document.getElementById("fiveDaysForecast");
+const search = document.querySelector(".search-box button");
 
 //Weather Api
 const APIKey = "496c5252f6db6014138471f722aa58d4";
@@ -16,105 +16,99 @@ const fetchStockholmWeather = async () => {
   let stockholmUrl = `https://api.openweathermap.org/data/2.5/weather?q=Stockholm,Sweden&units=metric&APPID=${APIKey}`;
 
   await fetch(stockholmUrl)
-    .then((res)=>{
+    .then((res) => {
       return res.json();
     })
-    .then(json => {
-      console.log(json)
+    .then((json) => {
+      console.log(json);
       const cityName = json.name;
       console.log("city:", cityName);
       const temp = json.main.temp;
       const tempRounded = Math.round(temp * 10) / 10;
       console.log("temp:", tempRounded);
       const weather = json.weather[0].description;
-      const weatherCapitalize = weather.charAt(0).toUpperCase() + weather.slice(1);
-      console.log("type:", weatherCapitalize);
+      console.log("type:", weather);
 
       // Convert sunrise unix time to hours & minutes
       const sunriseTime = new Date(json.sys.sunrise * 1000);
       const sunriseHour = sunriseTime
         .getHours()
-        .toLocaleString('en-US', {minimumIntegerDigits: 2});
+        .toLocaleString("en-US", { minimumIntegerDigits: 2 });
       console.log(sunriseHour);
       const sunriseMinutes = sunriseTime
         .getMinutes()
-        .toLocaleString('en-US', {minimumIntegerDigits: 2});
+        .toLocaleString("en-US", { minimumIntegerDigits: 2 });
       console.log(sunriseMinutes);
 
       // Convert sunset unix time to hours & minutes
       const sunsetTime = new Date(json.sys.sunset * 1000);
       const sunsetHour = sunsetTime
         .getHours()
-        .toLocaleString('en-US', {minimumIntegerDigits: 2});
+        .toLocaleString("en-US", { minimumIntegerDigits: 2 });
       console.log(sunsetHour);
       const sunsetMinutes = sunsetTime
         .getMinutes()
-        .toLocaleString('en-US', {minimumIntegerDigits: 2});
+        .toLocaleString("en-US", { minimumIntegerDigits: 2 });
       console.log(sunsetMinutes);
 
-
-      // Display image and text depending on weather type
-      let weatherMain = json.weather[0].main;
+      //display image depending on weather type
+      const weatherMain = json.weather[0].main;
       console.log(weatherMain);
-
       switch (weatherMain) {
         case "Clear":
           weatherImg.innerHTML = `
-            <img src="./design/design2/icons/sunnies.svg" />`;
-          weatherText.innerHTML += `
-            <h2>Get your sunnies on. ${cityName} is looking rather great today.</h2>`;
-            container.classList.toggle("container-clear");
+                  <img src="./design/design2/icons/sunnies.svg" />`;
+          weatherDescription.innerHTML += `
+                  <h2>Light a fire and get cosy. ${cityName} is looking grey today</h2>`;
+                  container.classList.toggle("container-clear");
           break;
-
         case "Clouds":
           weatherImg.innerHTML = `
-            <img src="./design/design2/icons/cloud.svg" />`;
-          weatherText.innerHTML += `
-            <h2>Light a fire and get cosy. ${cityName} is looking grey today.</h2>`;
-            container.classList.toggle("container-cloudy");
+                  <img src="./design/design2/icons/cloud.svg" />`;
+          weatherDescription.innerHTML += `
+                  <h2>The sky is 50 shades of grey in ${cityName}. </h2>`;
+                  container.classList.toggle("container-cloudy");
           break;
-
         case "Rain":
           weatherImg.innerHTML = `
-            <img src="./design/design2/icons/umbrella.svg" />`;
-          weatherText.innerHTML += `
-            <h2>Don't forget your umbrella. It's wet in ${cityName} today.</h2>`;
-            container.classList.toggle("container-rainy");
+                  <img src="./design/design2/icons/umbrella.svg" />`;
+          weatherDescription.innerHTML += `
+                  <h2>Don't forget your umbrella. It's wet in ${cityName} today. </h2>`;
+                  container.classList.toggle("container-rainy");
           break;
-
         case "Snow":
           weatherImg.innerHTML = `
-            <img src="./design/design2/icons/snowflake.svg" />`;
-          weatherText.innerHTML += `
-            <h2>Don't forget your winter coat. It's snowy in ${cityName} today.</h2>`;
-            container.classList.toggle("container-snowy");
+                  <img src="./design/design2/icons/snowflake.svg" />`;
+          weatherDescription.innerHTML += `
+                  <h2>Don't forget your winter coat. It's snowy in ${cityName} today.</h2>`;
+                  container.classList.toggle("container-snowy");
           break;
-          
         default:
           weatherImg.innerHTML = `
-            <img src="./design/design2/icons/sunnies.svg" />`;
-          weatherText.innerHTML += `
-            <h2>Get your sunnies on. ${cityName} is looking rather great today. </h2>`;
+                  <img src="./design/design2/icons/sunnies.svg" />`;
+          weatherDescription.innerHTML += `
+                  <h2>Get your sunnies on. ${cityName} is looking rather great today. </h2>`;
           break;
-      } 
-      
+      }
 
       // Display values in DOM
       typeTemp.innerHTML = `
-        <p>${weatherCapitalize} | ${tempRounded}&deg</p>
-      `
+        <h3>${weather} | ${tempRounded}&deg</h3>
+      `;
       sunrise.innerHTML = `
-        <p>sunrise ${sunriseHour}:${sunriseMinutes}</p>
+        <h3>sunrise ${sunriseHour}:${sunriseMinutes}</h3>
       `;
       sunset.innerHTML = `
-        <p>sunset ${sunsetHour}:${sunsetMinutes}</p>
+        <h3>sunset ${sunsetHour}:${sunsetMinutes}</h3>
       `;
-    }) 
+    })
     .catch((err) => console.log(err));
 };
+//fetchStockholmWeather();
 
-fetchStockholmWeather();
 
+
+// Function to fetch data in Stockholm
 const fetchForecast = async () => {
   let stockholmUrl = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=${APIKey}`;
 
@@ -163,11 +157,11 @@ const fetchForecast = async () => {
                 <div id="forecastSection" class="forecast-section">
                 
                     <div id="weekdaysection" class="weekday-section">
-                      <h3> ${weekday} </h3>
+                         <h3> ${weekday} </h3>
                     </div>
                     
                     <div id="temperature" class="temperature">
-                      <h3>Min: ${minTemp}&deg | Max ${maxTemp}&deg</h3>
+                    <h3>Min: ${minTemp}&deg | Max ${maxTemp}&deg</h3>
                     </div>
 
                 </div>
@@ -176,9 +170,10 @@ const fetchForecast = async () => {
     })
     .catch((err) => console.log(err));
 };
+//fetchForecast();
 
-fetchForecast();
 
+// below codes are working uncorrectly, click method is not working properly you need to reload the page to see the result and search the city
 // Function to fetch data
 const performWeatherSearch = () => {
   const city = myInput.value;
@@ -330,7 +325,6 @@ const performWeatherSearch = () => {
                     <div id="temperature" class="temperature">
                     <h3>Min: ${minTemp}&deg | Max ${maxTemp}&deg</h3>
                     </div>
-
                 </div>
                 `;
       }
