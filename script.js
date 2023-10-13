@@ -113,7 +113,6 @@ const fetchStockholmWeather = async () => {
 fetchStockholmWeather();
 
 
-
 // Function to fetch forecast in Stockholm
 const fetchForecast = async () => {
   let stockholmUrl = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=${APIKey}`;

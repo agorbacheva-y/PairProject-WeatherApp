@@ -4,9 +4,6 @@ body {
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	font-family: 'Montserrat', sans-serif;
-	max-width: 100%;
-	min-height: 100vh;
 }
 
 .container {
@@ -16,6 +13,7 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	padding: 0 30px;
+	font-family: 'Montserrat', sans-serif;
 }
 
 /* SEARCH BAR */
@@ -27,9 +25,11 @@ body {
 }
 
 .search-box::placeholder {
-	color: #fff4ec;
+	color: #F47775;
+	opacity: 50%;
 }
 
+/* the css for '.search-box input' does not seem to reflect in html? */
 .search-box input {
 	background: #F47775;
 	opacity: 40%;
@@ -119,31 +119,24 @@ button:hover {
 }
 
 @media (min-width: 667px) {
-	.container{
+	.container {
 		font-size: 24px;
 		padding: 15%;
 		justify-content: space-evenly;
 	}
 
-    img {
-        width: 75px;
-        padding-top: 20px;
-    }
+	.weather-img > img {
+		width: 100px;
+		padding-top: 20px;
+	}    
 
-    h3 {
-        font-weight: 300;
-    }
-    
-}
+	.header h3 {
+		font-size: 24px;
+		line-height: 10px;
+	}
 
-@media (min-width: 1024px) {
-
-    .container{
-    font-size: 24px;
-    justify-content: space-between;
-    }
-    
-    h3 {
-        font-weight: 300;
-    }
+	.forecast-day > h3,
+	.forecast-temperature > h3 {
+		font-size: 24px;
+	}
 }
