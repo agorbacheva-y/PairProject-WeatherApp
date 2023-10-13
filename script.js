@@ -335,3 +335,21 @@ const performWeatherSearch = () => {
 
 //Eventlistener for search button
 search.addEventListener("click", performWeatherSearch);
+
+
+//Geolocation
+const getCoords = () => {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else {
+    console.log("Geolocation not supported.")
+  }
+};
+
+const showPosition = (position) => {
+  let lat = position.coords.latitude;
+  let lon = position.coords.longitude;
+  console.log(`Latitude: ${lat} Longitude: ${lon}`);
+};
+
+getCoords();
