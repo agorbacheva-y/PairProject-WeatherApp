@@ -27,7 +27,8 @@ const fetchStockholmWeather = async () => {
       const tempRounded = Math.round(temp * 10) / 10;
       console.log("temp:", tempRounded);
       const weather = json.weather[0].description;
-      console.log("type:", weather);
+      const weatherCapitalize = weather.charAt(0).toUpperCase() + weather.slice(1);
+      console.log("type:", weatherCapitalize);
 
       // Convert sunrise unix time to hours & minutes
       const sunriseTime = new Date(json.sys.sunrise * 1000);
@@ -98,7 +99,7 @@ const fetchStockholmWeather = async () => {
 
       // Display values in DOM
       typeTemp.innerHTML = `
-        <h3>${weather} | ${tempRounded}&deg</h3>
+        <h3>${weatherCapitalize} | ${tempRounded}&deg</h3>
       `;
       sunrise.innerHTML = `
         <h3>sunrise ${sunriseHour}:${sunriseMinutes}</h3>
@@ -153,7 +154,7 @@ const fetchForecast = async () => {
 
       for (const date in dailyTemperatures) {
         const weekday = new Date(date).toLocaleString("en-US", {
-          weekday: "long",
+          weekday: "short",
         });
         const minTemp = dailyTemperatures[date].min;
         const maxTemp = dailyTemperatures[date].max;
@@ -161,10 +162,10 @@ const fetchForecast = async () => {
         fiveDaysForecast.innerHTML += `
           <div id="forecastSection" class="forecast-section">
             <div id="weekdaysection" class="forecast-day">
-              <h3> ${weekday} </h3>
+              <h3> ${weekday.toLowerCase()} </h3>
             </div>
             <div id="temperature" class="forecast-temperature">
-              <h3>Min: ${minTemp}&deg | Max ${maxTemp}&deg</h3>
+              <h3>min: ${minTemp}&deg | max ${maxTemp}&deg</h3>
             </div>
           </div>
           `;
@@ -320,7 +321,7 @@ const performWeatherSearch = () => {
         fiveDaysForecastElement.innerHTML += `
           <div id="forecastSection" class="forecast-section">
             <div id="weekdaysection" class="forecast-day">
-              <h3> ${weekday} </h3>
+              <h3>${weekday}</h3>
             </div>
             <div id="temperature" class="forecast-temperature">
               <h3>Min: ${minTemp}&deg | Max ${maxTemp}&deg</h3>
@@ -334,4 +335,4 @@ const performWeatherSearch = () => {
 };
 
 //Eventlistener for search button
-search.addEventListener("click", performWeatherSearch);
+//search.addEventListener("click", performWeatherSearch);

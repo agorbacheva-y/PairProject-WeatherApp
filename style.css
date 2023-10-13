@@ -9,13 +9,6 @@ body {
 	min-height: 100vh;
 }
 
-/* HEADER */
-.header h3 {
-	font-weight: 400;
-	font-size: 18px;
-	line-height: 5px;
-}
-
 .container {
 	max-width: 100%;
 	min-height: 100vh;
@@ -30,7 +23,6 @@ body {
 	border: none;
 	outline: none;
 	padding: 8px 8px;
-	margin-bottom: 25px;
 	border-radius: 18px;
 }
 
@@ -65,6 +57,17 @@ button:hover {
 	opacity: 70%;
 }
 
+/* HEADER */
+.header {
+	margin-bottom: 15px;
+}
+
+.header h3 {
+	font-weight: 400;
+	font-size: 18px;
+	line-height: 5px;
+}
+
 /* IMG AND TEXT */
 .weather-description {
 	max-width: 100%;
@@ -84,7 +87,7 @@ button:hover {
 .forecast-section {
 	display: flex;
 	justify-content: space-between;
-	border-bottom: 2px dotted;
+	border-bottom: 1px dotted #707070;
 	line-height: 0px;
 }
 
