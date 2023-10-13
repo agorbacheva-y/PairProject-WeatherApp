@@ -338,6 +338,8 @@ search.addEventListener("click", performWeatherSearch);
 
 
 //Geolocation
+
+// get latitude and longitude
 const getCoords = () => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
@@ -353,3 +355,6 @@ const showPosition = (position) => {
 };
 
 getCoords();
+
+// api call with lat and lon
+//url = `https://api.openweathermap.org/data/3.0/onecall?lat=${lat}&lon=${lon}&exclude={part}&appid=${APIKey}`;
