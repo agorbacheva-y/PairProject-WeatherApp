@@ -1,8 +1,10 @@
 # Weather App
 
-Replace this readme with your own information about your project.
+Pair Project: Olcay Tapan and Ayumi Gorbacheva-Yamamoto
 
-Start by briefly describing the assignment in a sentence or two. Keep it short and to the point.
+Brief: Create a weather app using the Open Weather Map API that shows city name, current temperature, weather type, sunrise time, sunset time, five-day forecast.
+
+Design: We picked the provided Design #1: https://www.figma.com/file/6puPcWV9EFpf2lpSjszm5E/Weather-app?type=design&node-id=1-2&mode=design&t=BjCsphOzyXsEiI5N-0 
 
 ## The problem
 
