@@ -114,7 +114,7 @@ const fetchStockholmWeather = async () => {
     .catch((err) => console.log(err));
 };
 
-// Function to fetch data in Stockholm
+// Function to fetch forecast in Stockholm
 const fetchForecast = async () => {
   let stockholmUrl = `https://api.openweathermap.org/data/2.5/forecast?q=Stockholm,Sweden&units=metric&APPID=${APIKey}`;
 
@@ -266,35 +266,39 @@ async function getWeatherInfo(cityName) {
         case "Clear":
           weatherImg.innerHTML = `
             <img src="./design/design2/icons/sunnies.svg" />`;
-          weatherDescription.innerHTML += `
-            <h2>Light a fire and get cosy. ${cityName} is looking grey today</h2>`;
-            container.classList.toggle("container-clear");
+          weatherText.innerHTML += `
+            <h2>Get your sunnies on. ${cityName} is looking rather great today.</h2>`;
+          container.classList.toggle("container-clear");
           break;
+
         case "Clouds":
           weatherImg.innerHTML = `
             <img src="./design/design2/icons/cloud.svg" />`;
-          weatherDescription.innerHTML += `
-            <h2>The sky is 50 shades of grey in ${cityName}. </h2>`;
-            container.classList.toggle("container-cloudy");
+          weatherText.innerHTML += `
+            <h2>Light a fire and get cosy. ${cityName} is looking grey today. </h2>`;
+          container.classList.toggle("container-cloudy");
           break;
+
         case "Rain":
           weatherImg.innerHTML = `
             <img src="./design/design2/icons/umbrella.svg" />`;
-          weatherDescription.innerHTML += `
+          weatherText.innerHTML += `
             <h2>Don't forget your umbrella. It's wet in ${cityName} today. </h2>`;
-            container.classList.toggle("container-rainy");
+          container.classList.toggle("container-rainy");
           break;
+
         case "Snow":
           weatherImg.innerHTML = `
             <img src="./design/design2/icons/snowflake.svg" />`;
-          weatherDescription.innerHTML += `
+          weatherText.innerHTML += `
             <h2>Don't forget your winter coat. It's snowy in ${cityName} today.</h2>`;
-            container.classList.toggle("container-snowy");
+          container.classList.toggle("container-snowy");
           break;
+
         default:
           weatherImg.innerHTML = `
             <img src="./design/design2/icons/sunnies.svg" />`;
-          weatherDescription.innerHTML += `
+          weatherText.innerHTML += `
             <h2>Get your sunnies on. ${cityName} is looking rather great today. </h2>`;
           break;
       }
@@ -376,14 +380,13 @@ const getForecastInfo = async (cityName) => {
       }
         })
       };
-};
+});
 
 //Eventlistener for search button
 //search.addEventListener("click", performWeatherSearch);
 
 
 //Geolocation
-
 
 // Get coordinates for current location
 const getCoords = () => {
@@ -401,7 +404,8 @@ const showPosition = (position) => {
   
 
   //Fetch weather data
-  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKey}`;
+  const APIKey = "496c5252f6db6014138471f722aa58d4";
+  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKey}`;
 
   fetch(url)
     .then((res) => {
@@ -445,37 +449,41 @@ const showPosition = (position) => {
       switch (weatherMain) {
         case "Clear":
           weatherImg.innerHTML = `
-                  <img src="./design/design2/icons/sunnies.svg" />`;
-          weatherDescription.innerHTML += `
-                  <h2>Light a fire and get cosy. ${cityName} is looking grey today</h2>`;
-                  container.classList.toggle("container-clear");
+            <img src="./design/design2/icons/sunnies.svg" />`;
+          weatherText.innerHTML += `
+            <h2>Get your sunnies on. ${cityName} is looking rather great today.</h2>`;
+          container.classList.toggle("container-clear");
           break;
+
         case "Clouds":
           weatherImg.innerHTML = `
-                  <img src="./design/design2/icons/cloud.svg" />`;
-          weatherDescription.innerHTML += `
-                  <h2>The sky is 50 shades of grey in ${cityName}. </h2>`;
-                  container.classList.toggle("container-cloudy");
+            <img src="./design/design2/icons/cloud.svg" />`;
+          weatherText.innerHTML += `
+            <h2>Light a fire and get cosy. ${cityName} is looking grey today. </h2>`;
+          container.classList.toggle("container-cloudy");
           break;
+
         case "Rain":
           weatherImg.innerHTML = `
-                  <img src="./design/design2/icons/umbrella.svg" />`;
-          weatherDescription.innerHTML += `
-                  <h2>Don't forget your umbrella. It's wet in ${cityName} today. </h2>`;
-                  container.classList.toggle("container-rainy");
+            <img src="./design/design2/icons/umbrella.svg" />`;
+          weatherText.innerHTML += `
+            <h2>Don't forget your umbrella. It's wet in ${cityName} today. </h2>`;
+          container.classList.toggle("container-rainy");
           break;
+
         case "Snow":
           weatherImg.innerHTML = `
-                  <img src="./design/design2/icons/snowflake.svg" />`;
-          weatherDescription.innerHTML += `
-                  <h2>Don't forget your winter coat. It's snowy in ${cityName} today.</h2>`;
-                  container.classList.toggle("container-snowy");
+            <img src="./design/design2/icons/snowflake.svg" />`;
+          weatherText.innerHTML += `
+            <h2>Don't forget your winter coat. It's snowy in ${cityName} today.</h2>`;
+          container.classList.toggle("container-snowy");
           break;
+
         default:
           weatherImg.innerHTML = `
-                  <img src="./design/design2/icons/sunnies.svg" />`;
-          weatherDescription.innerHTML += `
-                  <h2>Get your sunnies on. ${cityName} is looking rather great today. </h2>`;
+            <img src="./design/design2/icons/sunnies.svg" />`;
+          weatherText.innerHTML += `
+            <h2>Get your sunnies on. ${cityName} is looking rather great today. </h2>`;
           break;
       }
 
@@ -492,7 +500,7 @@ const showPosition = (position) => {
     })
 
     // Five day weather forecast
-    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&APPID=${APIKey}`;
+    let forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&APPID=${APIKey}`;
     const weatherFiveDays = document.getElementById("fiveDaysForecast");
 
     const fiveDaysForecast = () => {
@@ -547,174 +555,6 @@ const showPosition = (position) => {
       }
         })
       }};
-
-//Geolocation
-
-
-// Get coordinates for current location
-const getCoords = () => {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(showPosition);
-  } else {
-    console.log("Geolocation not supported.")
-  }
-};
-
-const showPosition = (position) => {
-  let lat = position.coords.latitude;
-  let lon = position.coords.longitude;
-  console.log(`Latitude: ${lat} Longitude: ${lon}`);
-  
-
-  //Fetch weather data
-  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${APIKey}`;
-
-  fetch(url)
-    .then((res) => {
-      return res.json();
-    })
-    .then((json) => {
-      console.log(json);
-      const cityName = json.name;
-      console.log("city:", cityName);
-      const temp = json.main.temp;
-      const tempRounded = Math.round(temp * 10) / 10;
-      console.log("temp:", tempRounded);
-      const weather = json.weather[0].description;
-      console.log("type:", weather);
-
-      // Convert sunrise unix time to hours & minutes
-      const sunriseTime = new Date(json.sys.sunrise * 1000);
-      const sunriseHour = sunriseTime
-        .getHours()
-        .toLocaleString("en-US", { minimumIntegerDigits: 2 });
-      console.log(sunriseHour);
-      const sunriseMinutes = sunriseTime
-        .getMinutes()
-        .toLocaleString("en-US", { minimumIntegerDigits: 2 });
-      console.log(sunriseMinutes);
-
-      // Convert sunset unix time to hours & minutes
-      const sunsetTime = new Date(json.sys.sunset * 1000);
-      const sunsetHour = sunsetTime
-        .getHours()
-        .toLocaleString("en-US", { minimumIntegerDigits: 2 });
-      console.log(sunsetHour);
-      const sunsetMinutes = sunsetTime
-        .getMinutes()
-        .toLocaleString("en-US", { minimumIntegerDigits: 2 });
-      console.log(sunsetMinutes);
-
-      //display image depending on weather type
-      const weatherMain = json.weather[0].main;
-      console.log(weatherMain);
-      switch (weatherMain) {
-        case "Clear":
-          weatherImg.innerHTML = `
-                  <img src="./design/design2/icons/sunnies.svg" />`;
-          weatherDescription.innerHTML += `
-                  <h2>Light a fire and get cosy. ${cityName} is looking grey today</h2>`;
-                  container.classList.toggle("container-clear");
-          break;
-        case "Clouds":
-          weatherImg.innerHTML = `
-                  <img src="./design/design2/icons/cloud.svg" />`;
-          weatherDescription.innerHTML += `
-                  <h2>The sky is 50 shades of grey in ${cityName}. </h2>`;
-                  container.classList.toggle("container-cloudy");
-          break;
-        case "Rain":
-          weatherImg.innerHTML = `
-                  <img src="./design/design2/icons/umbrella.svg" />`;
-          weatherDescription.innerHTML += `
-                  <h2>Don't forget your umbrella. It's wet in ${cityName} today. </h2>`;
-                  container.classList.toggle("container-rainy");
-          break;
-        case "Snow":
-          weatherImg.innerHTML = `
-                  <img src="./design/design2/icons/snowflake.svg" />`;
-          weatherDescription.innerHTML += `
-                  <h2>Don't forget your winter coat. It's snowy in ${cityName} today.</h2>`;
-                  container.classList.toggle("container-snowy");
-          break;
-        default:
-          weatherImg.innerHTML = `
-                  <img src="./design/design2/icons/sunnies.svg" />`;
-          weatherDescription.innerHTML += `
-                  <h2>Get your sunnies on. ${cityName} is looking rather great today. </h2>`;
-          break;
-      }
-
-      // Display values in DOM
-      typeTemp.innerHTML = `
-        <h3>${weather} | ${tempRounded}&deg</h3>
-      `;
-      sunrise.innerHTML = `
-        <h3>sunrise ${sunriseHour}:${sunriseMinutes}</h3>
-      `;
-      sunset.innerHTML = `
-        <h3>sunset ${sunsetHour}:${sunsetMinutes}</h3>
-      `;
-    })
-
-    // Five day weather forecast
-    const forecastUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&APPID=${APIKey}`;
-    const weatherFiveDays = document.getElementById("fiveDaysForecast");
-
-    const fiveDaysForecast = () => {
-      fetch(forecastUrl)
-        .then((res) => {
-          return res.json();
-        })
-        .then((fiveDayArray) => {
-          //Finding the min and max temperature for each day
-      const dailyTemperatures = fiveDayArray.list.reduce((result, item) => {
-        const date = item.dt_txt.split(" ")[0];
-        const temperature = item.main.temp;
-
-        //convert temperature to 1 decimal
-        const temperatureRounded = Math.round(temperature * 10) / 10;
-        //console.log(date," : ", temperature);
-
-        if (!result[date]) {
-          result[date] = { min: temperatureRounded, max: temperatureRounded };
-        } else {
-          if (temperatureRounded < result[date].min) {
-            result[date].min = temperatureRounded;
-          }
-          if (temperatureRounded > result[date].max) {
-            result[date].max = temperatureRounded;
-          }
-        }
-        return result;
-      }, {});
-      console.log(dailyTemperatures);
-
-      // Display values in DOM
-      fiveDaysForecast.innerHTML = "";
-
-      for (const date in dailyTemperatures) {
-        const weekday = new Date(date).toLocaleString("en-US", {
-          weekday: "short",
-        });
-        const minTemp = dailyTemperatures[date].min;
-        const maxTemp = dailyTemperatures[date].max;
-
-        fiveDaysForecast.innerHTML += `
-          <div id="forecastSection" class="forecast-section">
-            <div id="weekdaysection" class="forecast-day">
-              <h3> ${weekday.toLowerCase()} </h3>
-            </div>
-            <div id="temperature" class="forecast-temperature">
-              <h3>min: ${minTemp}&deg | max ${maxTemp}&deg</h3>
-            </div>
-          </div>
-          `;
-      }
-        })
-      };
-      fiveDaysForecast();
-};
 
 const myLocation = document.getElementById("myLocation");
 myLocation.addEventListener("click", getCoords);
