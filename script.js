@@ -260,7 +260,7 @@ async function getWeatherInfo(cityName) {
     console.log(data);
 
       //display image depending on weather type
-      const weatherMain = json.weather[0].main;
+      const weatherMain = data.weather[0].main;
       console.log(weatherMain);
       switch (weatherMain) {
         case "Clear":
