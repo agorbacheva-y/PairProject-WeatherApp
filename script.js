@@ -389,6 +389,7 @@ const getForecastInfo = async (cityName) => {
 //Geolocation
 
 // Get coordinates for current location
+let myContainer = document.getElementById("container");
 const typeTemp = document.getElementById("typeTemp");
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
@@ -466,7 +467,7 @@ const showPosition = (position) => {
             <img src="./design/design2/icons/sunnies.svg" />`;
           weatherText.innerHTML += `
             <h2>Get your sunnies on. ${cityName} is looking rather great today.</h2>`;
-          container.classList.toggle("container-clear");
+            myContainer.classList.toggle("container-clear");
           break;
 
         case "Clouds":
@@ -474,7 +475,7 @@ const showPosition = (position) => {
             <img src="./design/design2/icons/cloud.svg" />`;
           weatherText.innerHTML += `
             <h2>Light a fire and get cosy. ${cityName} is looking grey today. </h2>`;
-          container.classList.toggle("container-cloudy");
+            myContainer.classList.toggle("container-cloudy");
           break;
 
         case "Rain":
@@ -482,7 +483,7 @@ const showPosition = (position) => {
             <img src="./design/design2/icons/umbrella.svg" />`;
           weatherText.innerHTML += `
             <h2>Don't forget your umbrella. It's wet in ${cityName} today. </h2>`;
-          container.classList.toggle("container-rainy");
+            myContainer.classList.toggle("container-rainy");
           break;
 
         case "Snow":
@@ -490,7 +491,7 @@ const showPosition = (position) => {
             <img src="./design/design2/icons/snowflake.svg" />`;
           weatherText.innerHTML += `
             <h2>Don't forget your winter coat. It's snowy in ${cityName} today.</h2>`;
-          container.classList.toggle("container-snowy");
+            myContainer.classList.toggle("container-snowy");
           break;
 
         default:
