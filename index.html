@@ -1,46 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
-  <link rel="stylesheet" href="./style.css" defer />
-</head>
-<body>
-  <div id="container" class="container">
-    <div id="header" class="header">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" defer />
+  </head>
+  <body>
+    <div id="container" class="container">
+      <div id="header" class="header">
+
+
+        <input type="text" id="search" placeholder="Enter a city name">
+        <button id="searchbtn">Search</button>
+        <button id="clearbtn">Clear</button>
+
+
+
         <div id="typeTemp" class="type-temp"></div>
         <div id="sunrise" class="sunrise"></div>
         <div id="sunset" class="sunset"></div>
-    </div>
-    
-    <div id="weatherDescription" class="weather-description">
-      <div class="grid-container">
-        <div id="weatherImg" class="weather-img"></div>
-        <div class="search-box">
-          <input type="text" id="myInput" class="search-box" placeholder="Search your location" />
-          <button id="myBtn">
-            <i class="fa-sharp fa-solid fa-magnifying-glass"></i>
-          </button>
-        </div>
       </div>
+
+      <div id="weatherDescription" class="weather-description">
+        <div class="grid-container">
+          <div id="weatherImg" class="weather-img"></div>
+        </div>
         <div id="weatherText" class="weather-text"></div>
+      </div>
+
+      <div id="fiveDaysForecast" class="five-days-forecast"></div>
     </div>
 
-    <div id="fiveDaysForecast" class="five-days-forecast"></div>
-</div>
-
-    <script>
-      var input = document.getElementById("myInput");
-      input.addEventListener("keypress", function (event) {
-        if (event.key === "Enter") {
-          event.preventDefault();
-          document.getElementById("myBtn").click();
-        }
-      });
-    </script>
-
-    <script src="https://kit.fontawesome.com/8e045d922d.js" crossorigin="anonymous"></script>
+    <script
+      src="https://kit.fontawesome.com/8e045d922d.js"
+      crossorigin="anonymous"
+    ></script>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

@@ -33,7 +33,7 @@ h3 {
     padding: 10%;
 }
 
-  .search-box {
+  .search {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -43,11 +43,11 @@ h3 {
     border-radius: 18px;
   }
   
-  .search-box::placeholder {
+  .search::placeholder {
     color: #fff4ec;
   }
   
-  .search-box input {
+  .search input {
     background: #F47775;
     opacity: 40%;
     color: #fff4ec;
@@ -55,7 +55,7 @@ h3 {
     font-size: 60%;
   }
 
-  button {
+  /*button {
     margin: 0.5em;
     border-radius: 50%;
     border: none;
@@ -72,7 +72,7 @@ h3 {
   button:hover {
     background: #612f2f;
     opacity: 70%;
-  }
+  }*/
 
 img {
     width: 72px;
