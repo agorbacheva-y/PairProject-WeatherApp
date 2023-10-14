@@ -57,6 +57,25 @@ body {
 	opacity: 70%;
 }
 
+/* GEOLOCATION */
+#myLocation {
+	margin: 0.5em;
+	border-radius: 18px;
+	border: none;
+	height: 40px;
+	width: 70px;
+	outline: none;
+	background: #F47775;
+	opacity: 40%;
+	color: #fff4ec;
+	cursor: pointer;
+	transition: 0.2s ease-in-out;
+}
+  
+#myLocation:hover {
+	opacity: 70%;
+}
+
 /* HEADER */
 .header {
 	margin-bottom: 15px;
@@ -83,25 +102,11 @@ body {
 	margin-top: -15px;
 }
 
-#myLocation {
-    margin: 0.5em;
-    border-radius: 18px;
-    border: none;
-    height: 40px;
-    width: 70px;
-    outline: none;
-    background: #F47775;
-    opacity: 40%;
-    color: #fff4ec;
-    cursor: pointer;
-    transition: 0.2s ease-in-out;
-  }
-  
-#myLocation:hover {
-    opacity: 70%;
-  }
-
 /* FORECAST */
+.five-days-forecast {
+	
+}
+
 .forecast-section {
 	display: flex;
 	justify-content: space-between;

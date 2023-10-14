@@ -110,7 +110,7 @@ const fetchStockholmWeather = async () => {
     })
     .catch((err) => console.log(err));
 };
-fetchStockholmWeather();
+//fetchStockholmWeather();
 
 
 // Function to fetch forecast in Stockholm
@@ -172,7 +172,7 @@ const fetchForecast = async () => {
     })
     .catch((err) => console.log(err));
 };
-fetchForecast();
+//fetchForecast();
 
 
 // below codes are working uncorrectly, click method is not working properly you need to reload the page to see the result and search the city
@@ -308,25 +308,25 @@ const performWeatherSearch = () => {
       console.log(dailyTemperatures);
 
       // Display values in DOM
-      fiveDaysForecastElement.innerHTML = "";
+      fiveDaysForecast.innerHTML = "";
 
       for (const date in dailyTemperatures) {
         const weekday = new Date(date).toLocaleString("en-US", {
-          weekday: "long",
+          weekday: "short",
         });
         const minTemp = dailyTemperatures[date].min;
         const maxTemp = dailyTemperatures[date].max;
 
-        fiveDaysForecastElement.innerHTML += `
+        fiveDaysForecast.innerHTML += `
           <div id="forecastSection" class="forecast-section">
             <div id="weekdaysection" class="forecast-day">
-              <h3>${weekday}</h3>
+              <h3> ${weekday.toLowerCase()} </h3>
             </div>
             <div id="temperature" class="forecast-temperature">
-              <h3>Min: ${minTemp}&deg | Max ${maxTemp}&deg</h3>
+              <h3>min: ${minTemp}&deg | max ${maxTemp}&deg</h3>
             </div>
           </div>
-        `;
+          `;
       }
         })
       };
@@ -334,7 +334,7 @@ const performWeatherSearch = () => {
 };
 
 //Eventlistener for search button
-search.addEventListener("click", performWeatherSearch);
+//search.addEventListener("click", performWeatherSearch);
 
 
 //Geolocation
@@ -480,23 +480,22 @@ const showPosition = (position) => {
       console.log(dailyTemperatures);
 
       // Display values in DOM
-      fiveDaysForecastElement.innerHTML = "";
+      fiveDaysForecast.innerHTML = "";
 
       for (const date in dailyTemperatures) {
         const weekday = new Date(date).toLocaleString("en-US", {
-          weekday: "long",
+          weekday: "short",
         });
         const minTemp = dailyTemperatures[date].min;
         const maxTemp = dailyTemperatures[date].max;
 
-        fiveDaysForecastElement.innerHTML += `
+        fiveDaysForecast.innerHTML += `
           <div id="forecastSection" class="forecast-section">
-            <div id="weekdaysection" class="weekday-section">
-              <h3> ${weekday} </h3>
+            <div id="weekdaysection" class="forecast-day">
+              <h3> ${weekday.toLowerCase()} </h3>
             </div>
-            
-            <div id="temperature" class="temperature">
-              <h3>Min: ${minTemp}&deg | Max ${maxTemp}&deg</h3>
+            <div id="temperature" class="forecast-temperature">
+              <h3>min: ${minTemp}&deg | max ${maxTemp}&deg</h3>
             </div>
           </div>
           `;
@@ -505,3 +504,6 @@ const showPosition = (position) => {
       };
       fiveDaysForecast();
 };
+
+const myLocation = document.getElementById("myLocation");
+myLocation.addEventListener("click", getCoords);
