@@ -300,7 +300,7 @@ async function getWeatherInfo(cityName) {
             <img src="./design/design2/icons/sunnies.svg" />`;
           weatherText.innerHTML += `
             <h2>Get your sunnies on. ${cityName} is looking rather great today. </h2>`;
-          break;
+            break;
       }
 
     // Display values in DOM
@@ -389,7 +389,7 @@ const getForecastInfo = async (cityName) => {
 //Geolocation
 
 // Get coordinates for current location
-let myContainer = document.getElementById("container");
+let container = document.getElementById("container");
 const typeTemp = document.getElementById("typeTemp");
 const sunrise = document.getElementById("sunrise");
 const sunset = document.getElementById("sunset");
@@ -467,7 +467,7 @@ const showPosition = (position) => {
             <img src="./design/design2/icons/sunnies.svg" />`;
           weatherText.innerHTML += `
             <h2>Get your sunnies on. ${cityName} is looking rather great today.</h2>`;
-            myContainer.classList.toggle("container-clear");
+            container.classList.toggle("container-clear");
           break;
 
         case "Clouds":
@@ -475,7 +475,7 @@ const showPosition = (position) => {
             <img src="./design/design2/icons/cloud.svg" />`;
           weatherText.innerHTML += `
             <h2>Light a fire and get cosy. ${cityName} is looking grey today. </h2>`;
-            myContainer.classList.toggle("container-cloudy");
+            container.classList.toggle("container-cloudy");
           break;
 
         case "Rain":
@@ -483,7 +483,7 @@ const showPosition = (position) => {
             <img src="./design/design2/icons/umbrella.svg" />`;
           weatherText.innerHTML += `
             <h2>Don't forget your umbrella. It's wet in ${cityName} today. </h2>`;
-            myContainer.classList.toggle("container-rainy");
+            container.classList.toggle("container-rainy");
           break;
 
         case "Snow":
@@ -491,7 +491,7 @@ const showPosition = (position) => {
             <img src="./design/design2/icons/snowflake.svg" />`;
           weatherText.innerHTML += `
             <h2>Don't forget your winter coat. It's snowy in ${cityName} today.</h2>`;
-            myContainer.classList.toggle("container-snowy");
+            container.classList.toggle("container-snowy");
           break;
 
         default:
