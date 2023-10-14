@@ -180,7 +180,7 @@ fetchForecast();
 // forecast informatıon after search
 searchbtn.addEventListener("click", () => {
   const cityName = search.value;
-    weatherDescription.innerHTML = ``;
+    weatherText.innerHTML = ``;
     weatherMain.innerHTML = ``;
     weatherImg.innerHTML = ``;
     typeTemp.innerHTML.innerHTML = ``;
@@ -199,7 +199,7 @@ searchbtn.addEventListener("click", () => {
 search.addEventListener("keypress", (event) => {
   if (event.key === "Enter") {
     event.preventDefault();
-    weatherDescription.innerHTML = ``;
+    weatherText.innerHTML = ``;
     weatherMain.innerHTML = ``;
     weatherImg.innerHTML = ``;
     typeTemp.innerHTML.innerHTML = ``;
@@ -377,7 +377,7 @@ const getForecastInfo = async (cityName) => {
             </div>
           </div>
           `;
-      }
+          }
         })
       };
 });
