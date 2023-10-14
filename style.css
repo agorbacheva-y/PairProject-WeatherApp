@@ -17,20 +17,20 @@ body {
 }
 
 /* SEARCH BAR */
-.search-box {
+.search {
 	border: none;
 	outline: none;
 	padding: 8px 8px;
 	border-radius: 18px;
 }
 
-.search-box::placeholder {
+.search::placeholder {
 	color: #F47775;
 	opacity: 50%;
 }
 
 /* the css for '.search-box input' does not seem to reflect in html? */
-.search-box input {
+.search input {
 	background: #F47775;
 	opacity: 40%;
 	color: #fff4ec;
@@ -38,24 +38,24 @@ body {
 	font-size: 60%;
 }
 
-#myBtn {
-	margin: 0.5em;
-	border-radius: 50%;
-	border: none;
-	height: 40px;
-	width: 40px;
-	outline: none;
-	background: #F47775;
-	opacity: 40%;
-	color: #fff4ec;
-	cursor: pointer;
-	transition: 0.2s ease-in-out;
-}
-
-#myBtn:hover {
-	background: #612f2f;
-	opacity: 70%;
-}
+  /*button {
+    margin: 0.5em;
+    border-radius: 50%;
+    border: none;
+    height: 40px;
+    width: 40px;
+    outline: none;
+    background: #F47775;
+    opacity: 40%;
+    color: #fff4ec;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+  }
+  
+  button:hover {
+    background: #612f2f;
+    opacity: 70%;
+  }*/
 
 /* GEOLOCATION */
 #myLocation {
