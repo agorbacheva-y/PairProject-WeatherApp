@@ -389,7 +389,21 @@ const getForecastInfo = async (cityName) => {
 //Geolocation
 
 // Get coordinates for current location
+const typeTemp = document.getElementById("typeTemp");
+const sunrise = document.getElementById("sunrise");
+const sunset = document.getElementById("sunset");
+const weatherImg = document.getElementById("weatherImg");
+const weatherText = document.getElementById("weatherText");
+const fiveDaysForecastElement = document.getElementById("fiveDaysForecast");
+
 const getCoords = () => {
+  weatherText.innerHTML = ``;
+  weatherImg.innerHTML = ``;
+  typeTemp.innerHTML.innerHTML = ``;
+  sunrise.innerHTML.innerHTML = ``;
+  sunset.innerHTML.innerHTML = ``;
+  fiveDaysForecastElement.innerHTML.innerHTML = ``;
+  
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(showPosition);
   } else {
