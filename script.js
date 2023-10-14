@@ -177,6 +177,13 @@ fetchForecast();
 // forecast informatıon after search
 searchbtn.addEventListener("click", () => {
   const cityName = search.value;
+    weatherDescription.innerHTML = ``;
+    weatherMain.innerHTML = ``;
+    weatherImg.innerHTML = ``;
+    typeTemp.innerHTML.innerHTML = ``;
+    sunrise.innerHTML.innerHTML = ``;
+    sunset.innerHTML.innerHTML = ``;
+    fiveDaysForecastElement.innerHTML.innerHTML = ``;
 
   if (cityName) {
     console.log(cityName);

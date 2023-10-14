@@ -27,10 +27,11 @@ h3 {
 .container {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-evenly;
     font-size: 15px;
     font-family: 'Montserrat', sans-serif;
     padding: 10%;
+    height: 100%;
 }
 
   .search {
