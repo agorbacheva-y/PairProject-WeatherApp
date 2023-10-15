@@ -28,6 +28,7 @@ body {
 	outline: none;
 	padding: 8px 8px;
 	border-radius: 18px;
+	background-color: #75f4c34d;
 }
 
 .inpstyle {
@@ -38,6 +39,7 @@ body {
     width: 100px;
     color: #F47775;
 	margin-top: 5px;
+	background-color: #75f4c34d;
 }
 
 .search::placeholder {
@@ -81,8 +83,8 @@ body {
 	height: 40px;
 	width: 70px;
 	outline: none;
-	background: #f47775ad;
-	color: #fff4ec;
+	background: #75f4c34d;
+	color: #F47775;
 	cursor: pointer;
 	transition: 0.2s ease-in-out;
 }
