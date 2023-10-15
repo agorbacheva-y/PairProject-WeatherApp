@@ -8,7 +8,9 @@ Design: We picked the provided Design #1: https://www.figma.com/file/6puPcWV9EFp
 
 ## The problem
 
-Describe how you approached to problem, and what tools and techniques you used to solve it. How did you plan? What technologies did you use? If you had more time, what would be next?
+The API used was openweathermap.org. Once we stumbled upon a problem, we used google, stack overflow and w3schools to find help.
+
+If we had more time, we would make the app more accurate - have more weather options (and designs) in our if-else statements.
 
 ## View it live
 
