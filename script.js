@@ -382,10 +382,6 @@ const getForecastInfo = async (cityName) => {
       };
 });
 
-//Eventlistener for search button
-//search.addEventListener("click", performWeatherSearch);
-
-
 //Geolocation
 
 // Get coordinates for current location
@@ -431,7 +427,7 @@ const showPosition = (position) => {
       const cityName = json.name;
       console.log("city:", cityName);
       const temp = json.main.temp;
-      const tempRounded = Math.round(temp * 10) / 10;
+      const tempRounded = Math.round((temp-273,15) * 10) / 10;
       console.log("temp:", tempRounded);
       const weather = json.weather[0].description;
       console.log("type:", weather);
@@ -528,9 +524,10 @@ const showPosition = (position) => {
       const dailyTemperatures = fiveDayArray.list.reduce((result, item) => {
         const date = item.dt_txt.split(" ")[0];
         const temperature = item.main.temp;
+        console.log(temperature);
 
         //convert temperature to 1 decimal
-        const temperatureRounded = Math.round(temperature * 10) / 10;
+        const temperatureRounded = Math.round((temperature- 273.15) * 10) / 10;
         //console.log(date," : ", temperature);
 
         if (!result[date]) {
@@ -554,8 +551,8 @@ const showPosition = (position) => {
         const weekday = new Date(date).toLocaleString("en-US", {
           weekday: "short",
         });
-        const minTemp = dailyTemperatures[date].min;
-        const maxTemp = dailyTemperatures[date].max;
+        const curminTemp = dailyTemperatures[date].min;
+        const curmaxTemp = dailyTemperatures[date].max;
 
         fiveDaysForecast.innerHTML += `
           <div id="forecastSection" class="forecast-section">
@@ -563,14 +560,15 @@ const showPosition = (position) => {
               <h3> ${weekday.toLowerCase()} </h3>
             </div>
             <div id="temperature" class="forecast-temperature">
-              <h3>min: ${minTemp}&deg | max ${maxTemp}&deg</h3>
+              <h3>min: ${curminTemp}&deg | max ${curmaxTemp}&deg</h3>
             </div>
           </div>
           `;
       }
         })
-      }};
+      }
+      fiveDaysForecast();
+    };
 
 const myLocation = document.getElementById("myLocation");
 myLocation.addEventListener("click", getCoords);
-
