@@ -138,6 +138,11 @@ body {
 	color: #37d4e9;
 }
 
+.container-atmosphere {
+	background-color: #e8e9e9;
+	color: #1c657e;
+}
+
 @media (min-width: 667px) {
 	.container {
 		font-size: 24px;

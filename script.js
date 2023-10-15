@@ -25,39 +25,39 @@ const fetchStockholmWeather = async () => {
     .then((json) => {
       console.log(json);
       const cityName = json.name;
-      console.log("city:", cityName);
+      //console.log("city:", cityName);
       const temp = json.main.temp;
       const tempRounded = Math.round(temp * 10) / 10;
-      console.log("temp:", tempRounded);
+      //console.log("temp:", tempRounded);
       const weather = json.weather[0].description;
       const weatherCapitalize = weather.charAt(0).toUpperCase() + weather.slice(1);
-      console.log("type:", weatherCapitalize);
+      //console.log("type:", weatherCapitalize);
 
       // Convert sunrise unix time to hours & minutes
       const sunriseTime = new Date(json.sys.sunrise * 1000);
       const sunriseHour = sunriseTime
         .getHours()
         .toLocaleString("en-US", { minimumIntegerDigits: 2 });
-      console.log(sunriseHour);
+      //console.log(sunriseHour);
       const sunriseMinutes = sunriseTime
         .getMinutes()
         .toLocaleString("en-US", { minimumIntegerDigits: 2 });
-      console.log(sunriseMinutes);
+      //console.log(sunriseMinutes);
 
       // Convert sunset unix time to hours & minutes
       const sunsetTime = new Date(json.sys.sunset * 1000);
       const sunsetHour = sunsetTime
         .getHours()
         .toLocaleString("en-US", { minimumIntegerDigits: 2 });
-      console.log(sunsetHour);
+      //console.log(sunsetHour);
       const sunsetMinutes = sunsetTime
         .getMinutes()
         .toLocaleString("en-US", { minimumIntegerDigits: 2 });
-      console.log(sunsetMinutes);
+      //console.log(sunsetMinutes);
 
       // Display image depending on weather type
       const weatherMain = json.weather[0].main;
-      console.log(weatherMain);
+      console.log(`weather main: ${weatherMain}`);
 
       switch (weatherMain) {
         case "Clear":
@@ -123,8 +123,8 @@ const fetchForecast = async () => {
       return res.json();
     })
     .then((json) => {
-      console.log("forecast:");
-      console.log(json);
+      //console.log("forecast:");
+      //console.log(json);
 
       // Finding the min and max temperature for each day
       const dailyTemperatures = json.list.reduce((result, item) => {
@@ -147,7 +147,7 @@ const fetchForecast = async () => {
         }
         return result;
       }, {});
-      console.log(dailyTemperatures);
+      //console.log(dailyTemperatures);
 
       // Display values in DOM
       fiveDaysForecast.innerHTML = "";
@@ -226,49 +226,53 @@ async function getWeatherInfo(cityName) {
     );
     const data = await response.json();
     const city = data.name;
-    console.log("city:", city);
+    //console.log("city:", city);
     const temp = data.main.temp;
     const tempRounded = Math.round(temp * 10) / 10;
-    console.log("temp:", tempRounded);
+    //console.log("temp:", tempRounded);
     const weather = data.weather[0].main;
-    console.log("type:", weather);
+    //console.log("type:", weather);
 
     // Convert sunrise unix time to hours & minutes
     const sunriseTime = new Date(data.sys.sunrise * 1000);
     const sunriseHour = sunriseTime
       .getHours()
       .toLocaleString("en-US", { minimumIntegerDigits: 2 });
-    console.log(sunriseHour);
+    //console.log(sunriseHour);
     const sunriseMinutes = sunriseTime
       .getMinutes()
       .toLocaleString("en-US", { minimumIntegerDigits: 2 });
-    console.log(sunriseMinutes);
+    //console.log(sunriseMinutes);
 
     // Convert sunset unix time to hours & minutes
     const sunsetTime = new Date(data.sys.sunset * 1000);
     const sunsetHour = sunsetTime
       .getHours()
       .toLocaleString("en-US", { minimumIntegerDigits: 2 });
-    console.log(sunsetHour);
+    //console.log(sunsetHour);
     const sunsetMinutes = sunsetTime
       .getMinutes()
       .toLocaleString("en-US", { minimumIntegerDigits: 2 });
-    console.log(sunsetMinutes);
+    //console.log(sunsetMinutes);
 
     // Update DOM
-    console.log("data:");
+    //console.log("data:");
     console.log(data);
 
       //display image depending on weather type
       const weatherMain = data.weather[0].main;
-      console.log(weatherMain);
+      console.log(`weather main search: ${weatherMain}`);
+      const classes = ['container-cloudy', 'container-rainy', 'container-clear', 'container-snowy', 'container-atmosphere'];
+
       switch (weatherMain) {
         case "Clear":
           weatherImg.innerHTML = `
             <img src="./design/design2/icons/sunnies.svg" />`;
           weatherText.innerHTML += `
             <h2>Get your sunnies on. ${cityName} is looking rather great today.</h2>`;
-          container.classList.toggle("container-clear");
+          //container.classList.toggle("container-clear");
+          container.classList.remove(...classes);
+          container.classList.add('container-clear');
           break;
 
         case "Clouds":
@@ -276,15 +280,21 @@ async function getWeatherInfo(cityName) {
             <img src="./design/design2/icons/cloud.svg" />`;
           weatherText.innerHTML += `
             <h2>Light a fire and get cosy. ${cityName} is looking grey today. </h2>`;
-          container.classList.toggle("container-cloudy");
+          //container.classList.toggle("container-cloudy");
+          container.classList.remove(...classes);
+          container.classList.add('container-cloudy');
           break;
 
         case "Rain":
+        case "Thunderstorm":
+        case "Drizzle":
           weatherImg.innerHTML = `
             <img src="./design/design2/icons/umbrella.svg" />`;
           weatherText.innerHTML += `
             <h2>Don't forget your umbrella. It's wet in ${cityName} today. </h2>`;
-          container.classList.toggle("container-rainy");
+          //container.classList.toggle("container-rainy");
+          container.classList.remove(...classes);
+          container.classList.add('container-rainy');
           break;
 
         case "Snow":
@@ -292,15 +302,19 @@ async function getWeatherInfo(cityName) {
             <img src="./design/design2/icons/snowflake.svg" />`;
           weatherText.innerHTML += `
             <h2>Don't forget your winter coat. It's snowy in ${cityName} today.</h2>`;
-          container.classList.toggle("container-snowy");
+          //container.classList.toggle("container-snowy");
+          container.classList.remove(...classes);
+          container.classList.add('container-snowy');
           break;
 
         default:
           weatherImg.innerHTML = `
-            <img src="./design/design2/icons/sunnies.svg" />`;
+            <img src="./design/design2/icons/cloud.svg" />`;
           weatherText.innerHTML += `
-            <h2>Get your sunnies on. ${cityName} is looking rather great today. </h2>`;
-            break;
+            <h2>Something's in the air. Watch the skies in ${cityName} today. </h2>`;
+          container.classList.remove(...classes);
+          container.classList.add('container-atmosphere');
+          break;
       }
 
     // Display values in DOM
@@ -331,8 +345,8 @@ const getForecastInfo = async (cityName) => {
       return res.json();
     })
     .then((json) => {
-      console.log("forecast:");
-      console.log(json);
+      //console.log("forecast:");
+      //console.log(json);
 
       //Finding the min and max temperature for each day
       const dailyTemperatures = json.list.reduce((result, item) => {
@@ -355,7 +369,7 @@ const getForecastInfo = async (cityName) => {
         }
         return result;
       }, {});
-      console.log(dailyTemperatures);
+      //console.log(dailyTemperatures);
 
       // Display values in DOM
       fiveDaysForecast.innerHTML = "";
@@ -429,45 +443,49 @@ const showPosition = (position) => {
     .then((json) => {
       console.log(json);
       const cityName = json.name;
-      console.log("city:", cityName);
+      //console.log("city:", cityName);
       const temp = json.main.temp;
       const tempRounded = Math.round(temp * 10) / 10;
-      console.log("temp:", tempRounded);
+      console.log("temp:", temp, tempRounded);
       const weather = json.weather[0].description;
-      console.log("type:", weather);
+      //console.log("type:", weather);
 
       // Convert sunrise unix time to hours & minutes
       const sunriseTime = new Date(json.sys.sunrise * 1000);
       const sunriseHour = sunriseTime
         .getHours()
         .toLocaleString("en-US", { minimumIntegerDigits: 2 });
-      console.log(sunriseHour);
+      //console.log(sunriseHour);
       const sunriseMinutes = sunriseTime
         .getMinutes()
         .toLocaleString("en-US", { minimumIntegerDigits: 2 });
-      console.log(sunriseMinutes);
+      //console.log(sunriseMinutes);
 
       // Convert sunset unix time to hours & minutes
       const sunsetTime = new Date(json.sys.sunset * 1000);
       const sunsetHour = sunsetTime
         .getHours()
         .toLocaleString("en-US", { minimumIntegerDigits: 2 });
-      console.log(sunsetHour);
+      //console.log(sunsetHour);
       const sunsetMinutes = sunsetTime
         .getMinutes()
         .toLocaleString("en-US", { minimumIntegerDigits: 2 });
-      console.log(sunsetMinutes);
+      //console.log(sunsetMinutes);
 
       //display image depending on weather type
       const weatherMain = json.weather[0].main;
-      console.log(weatherMain);
+      console.log(`weather main geoloc: ${weatherMain}`);
+      const classes = ['container-cloudy', 'container-rainy', 'container-clear', 'container-snowy', 'container-atmosphere'];
+
       switch (weatherMain) {
         case "Clear":
           weatherImg.innerHTML = `
             <img src="./design/design2/icons/sunnies.svg" />`;
           weatherText.innerHTML += `
             <h2>Get your sunnies on. ${cityName} is looking rather great today.</h2>`;
-            container.classList.toggle("container-clear");
+          //container.classList.toggle("container-clear");
+          container.classList.remove(...classes);
+          container.classList.add('container-clear');
           break;
 
         case "Clouds":
@@ -475,15 +493,21 @@ const showPosition = (position) => {
             <img src="./design/design2/icons/cloud.svg" />`;
           weatherText.innerHTML += `
             <h2>Light a fire and get cosy. ${cityName} is looking grey today. </h2>`;
-            container.classList.toggle("container-cloudy");
+          //container.classList.toggle("container-cloudy");
+          container.classList.remove(...classes);
+          container.classList.add('container-cloudy');
           break;
 
         case "Rain":
+        case "Thunderstorm":
+        case "Drizzle":
           weatherImg.innerHTML = `
             <img src="./design/design2/icons/umbrella.svg" />`;
           weatherText.innerHTML += `
             <h2>Don't forget your umbrella. It's wet in ${cityName} today. </h2>`;
-            container.classList.toggle("container-rainy");
+          //container.classList.toggle("container-rainy");
+          container.classList.remove(...classes);
+          container.classList.add('container-rainy');
           break;
 
         case "Snow":
@@ -491,14 +515,18 @@ const showPosition = (position) => {
             <img src="./design/design2/icons/snowflake.svg" />`;
           weatherText.innerHTML += `
             <h2>Don't forget your winter coat. It's snowy in ${cityName} today.</h2>`;
-            container.classList.toggle("container-snowy");
+          //container.classList.toggle("container-snowy");
+          container.classList.remove(...classes);
+          container.classList.add('container-snowy');
           break;
 
         default:
           weatherImg.innerHTML = `
-            <img src="./design/design2/icons/sunnies.svg" />`;
+            <img src="./design/design2/icons/cloud.svg" />`;
           weatherText.innerHTML += `
-            <h2>Get your sunnies on. ${cityName} is looking rather great today. </h2>`;
+            <h2>Something's in the air. Watch the skies in ${cityName} today. </h2>`;
+          container.classList.remove(...classes);
+          container.classList.add('container-atmosphere');
           break;
       }
 
@@ -545,7 +573,7 @@ const showPosition = (position) => {
         }
         return result;
       }, {});
-      console.log(dailyTemperatures);
+      //console.log(dailyTemperatures);
 
       // Display values in DOM
       fiveDaysForecast.innerHTML = "";
