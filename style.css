@@ -136,23 +136,28 @@ body {
 
 /* COLOR CLASSES */
 .container-cloudy {
-	background-color: #005fb333;
+	background-color: #F4F7F8;
 	color: #F47775;
 }
 
 .container-rainy {
-	background-color: #7dd2f7;
-	color: #7d9eb1;
+	background-color: #BDE8FA;
+	color: #164A68;
 }
 
 .container-clear {
-	background-color: #f8dc7fbd;
+	background-color: #F7E9B9;
 	color: #2A5510;
 }
 
-.container-snowy{
+.container-snowy {
 	background-color: #84a5b1;
 	color: #37d4e9;
+}
+
+.container-atmosphere {
+	background-color: #e8e9e9;
+	color: #1c657e;
 }
 
 @media (min-width: 667px) {
